@@ -5,8 +5,8 @@ MecanumDrive::MecanumDrive(
 	int fr_fwd_pwm, int fr_bwd_pwm,
 	int rl_fwd_pwm, int rl_bwd_pwm,
 	int rr_fwd_pwm, int rr_bwd_pwm,
-	float speed_limit_percentage = 100,
-	float width = 0, float length = 0
+	float speed_limit_percentage,
+	float width, float length
 )
 {
 	_fl_fwd_pwm = fl_fwd_pwm;
