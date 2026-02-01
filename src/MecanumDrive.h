@@ -4,6 +4,34 @@
 #include <Arduino.h>
 
 class MecanumDrive {
+  private:
+    // Motor pin assignments
+    int _fl_fwd_pwm, _fl_bwd_pwm;
+    int _fr_fwd_pwm, _fr_bwd_pwm;
+    int _rl_fwd_pwm, _rl_bwd_pwm;
+    int _rr_fwd_pwm, _rr_bwd_pwm;
+
+    // Robot dimensions in meters
+    float _length, _width;
+
+    // Speed limit for PWM output as percentage (from 0% to 100%)
+    int _speed_limit_percentage;
+
+    // Individual motor velocity values (normalized)
+    float _v_fl, _v_fr, _v_rl, _v_rr;
+    
+    // Function signiture for setting PWM for use with external PWM drivers
+    typedef void (*setPWM)(int pin, int pwm);
+	  
+    // Compute and apply motor outputs
+    void update();
+    void update(setPWM setMethod);
+
+	  
+    // Set motor velocity with forwards and backwards pwm
+    void setMotor(int fwd_PWM, int bwd_PWM, float velocity);
+
+    void setMotor(int fwd_pwm, int bwd_pwm, float velocity, setPWM setPWM);
   public:
     /**
      * @param fl_fwd_pwm ccw pwm input for the front left motor in the drivetrain
@@ -30,35 +58,19 @@ class MecanumDrive {
     // Set the speed limit for PWM output as percentage (from 0% to 100%)
     void setSpeedLimit(int speed_limit_percentage);
 
+
     /**
      * @param x right positive velocity multiplier
      * @param y forward positive velocity multiplier
      */
     void drive(float x, float y, float omega);
-
-    
-
-  private:
-    // Motor pin assignments
-    int _fl_fwd_pwm, _fl_bwd_pwm;
-    int _fr_fwd_pwm, _fr_bwd_pwm;
-    int _rl_fwd_pwm, _rl_bwd_pwm;
-    int _rr_fwd_pwm, _rr_bwd_pwm;
-
-    // Robot dimensions in meters
-    float _length, _width;
-
-    // Speed limit for PWM output as percentage (from 0% to 100%)
-    int _speed_limit_percentage;
-
-    // Individual motor velocity values (normalized)
-    float _v_fl, _v_fr, _v_rl, _v_rr;
-
-	// Compute and apply motor outputs
-    void update();
-
-	// Set motor velocity with forwards and backwards pwm
-    void setMotor(int fwd_PWM, int bwd_PWM, float velocity);
+    /**
+     * @param x right positive velocity multiplier
+     * @param y forward positive velocity multiplier
+     * @param omega
+     * @param setMethod insert function with correct signiture to use with external controllers
+     */
+    void drive(float x, float y, float omega, setPWM setMethod);
 };
 
 #endif
