@@ -34,7 +34,7 @@ class MecanumDrive {
      * @param x right positive velocity multiplier
      * @param y forward positive velocity multiplier
      */
-    void drive(float x, float y, float omega)
+    void drive(float x, float y, float omega);
 
     
 
