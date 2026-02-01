@@ -31,10 +31,10 @@ class MecanumDrive {
     void setSpeedLimit(int speed_limit_percentage);
 
     /**
-     * @param vx right positive velocity multiplier
-     * @param vy forward positive velocity multiplier
+     * @param x right positive velocity multiplier
+     * @param y forward positive velocity multiplier
      */
-    void drive(float vx, float vy, float vomega)
+    void drive(float x, float y, float omega)
 
     
 
