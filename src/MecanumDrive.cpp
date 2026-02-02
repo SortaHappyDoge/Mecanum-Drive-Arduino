@@ -18,15 +18,6 @@ MecanumDrive::MecanumDrive(
 	_rr_fwd_pwm = rr_fwd_pwm;
 	_rr_bwd_pwm = rr_bwd_pwm;
 
-	pinMode(_fl_fwd_pwm, OUTPUT);
-	pinMode(_fl_bwd_pwm, OUTPUT);
-	pinMode(_fr_fwd_pwm, OUTPUT);
-	pinMode(_fr_bwd_pwm, OUTPUT);
-	pinMode(_rl_fwd_pwm, OUTPUT);
-	pinMode(_rl_bwd_pwm, OUTPUT);
-	pinMode(_rr_fwd_pwm, OUTPUT);
-	pinMode(_rr_bwd_pwm, OUTPUT);
-
 	_speed_limit_percentage = constrain(speed_limit_percentage, 0, 100);
 
 	setDimensions(width, length);

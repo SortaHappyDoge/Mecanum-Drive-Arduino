@@ -42,6 +42,10 @@ class MecanumDrive {
      * @param rl_bwd_pwm cw pwm input for the rear left motor in the drivetrain
      * @param rr_fwd_pwm ccw pwm input for the rear right motor in the drivetrain
      * @param rr_bwd_pwm cw pwm input for the rear right motor in the drivetrain
+     * @param speed_limit_percentage maximum speed percentage for every motor
+     * @param width drivetrain width in meters
+     * @param length drivetrain length in meters
+     * @warning Every pin MUST be set to OUTPUT mode manually if using Arduino's digitalwrite!
      */
     MecanumDrive(
 		int fl_fwd_pwm, int fl_bwd_pwm,
